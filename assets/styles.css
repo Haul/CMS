@@ -1,0 +1,103 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+}
+
+html, body {
+	background-color: #252525;
+	font-family: 'helvetica';
+	font-size: 16px;
+	line-height: 1;
+	color: #f8f8f8;
+}
+
+
+a, a:visited {}
+a:focus, a:hover {
+	text-decoration: underline;
+}
+
+
+section {
+	display: block;
+}
+	section.heading {
+		display: flex;
+		padding: 20px;
+		background-color: rgba(125, 125, 125, 0.1);
+	}
+
+
+.logo {}
+	.logo a {
+		display: block;
+		font-weight: 900;
+		font-size: 24px;
+		color: #fff;
+		text-decoration: none;
+	}
+
+
+nav.main {
+	margin-left: auto;
+	display: flex;
+	justify-content: space-between;
+}
+	nav.main a {
+		display: block;
+		padding: 5px 10px;
+		text-align: center;
+		text-decoration: none;
+		color: rgba(255, 255, 255, 0.8);
+		transition: color 0.2s ease;
+	}
+		nav.main a:hover {
+			color: #fff;
+		}
+
+
+.highlight .panel {
+	padding: 30px;
+	position: relative;
+	border: 1px solid red;
+}
+.highlight .panel::before {
+	padding: 5px 10px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	border: 1px solid red;
+	content: 'panel';
+	font-size: 10px;
+	line-height: 1;
+	background-color: rgba(255, 0, 0, 0.2);
+}
+
+.highlight .widget {
+	padding: 30px;
+	position: relative;
+	border: 1px solid green;
+}
+.highlight .widget::before {
+	padding: 5px 10px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	border: 1px solid green;
+	content: 'widget';
+	font-size: 10px;
+	line-height: 1;
+	background-color: rgba(0, 200, 0, 0.2);
+}
+
+
+.two-col {
+	display: flex;
+	justify-content: space-between;
+}
+.two-col > div {
+	flex: 1 1 50%;
+}
+.two-col .left-col {}
+.two-col .right-col {}

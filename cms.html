@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HaulCMS</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+		<link rel="stylesheet" href="assets/styles.css">
+	</head>
+	<body>
+		<div id="root" :class="{ 'highlight' : settings.enableHighlight }">
+			<component
+				v-if="widgets"
+				v-for="s in widgets"
+				:key="s.id"
+				:is="s.name"
+				:sections="s.sections"
+				:settings="s.settings"
+			></component>
+		</div>
+
+		<script type="text/template" id="heading-template">
+			<section class="panel heading">
+				<div class="logo">
+					<a href="/">HaulCMS</a>
+				</div>
+				<nav class="main" v-if="nav.length">
+					<a
+						v-for="ni in nav"
+						:key="ni.order"
+						:href="ni.href"
+						:target="ni.isExternal ? '_blank' : '_self'"
+					>{{ni.label}}</a>
+				</nav>
+			</section>
+		</script>
+
+		<script type="text/template" id="container-template">
+			<div class="panel container">
+				<component
+					v-if="sections"
+					v-for="s in sections.content"
+					:key="s.id"
+					:is="s.name"
+					:sections="s.sections"
+					:settings="s.settings"
+				></component>
+			</div>
+		</script>
+
+		<script type="text/template" id="one-col-template">
+			<div class="panel one-col">
+				<h2>one col</h2>
+				<component
+					v-if="sections"
+					v-for="s in sections.content"
+					:key="s.id"
+					:is="s.name"
+					:sections="s.sections"
+					:settings="s.settings"
+				></component>
+			</div>
+		</script>
+
+		<script type="text/template" id="two-col-template">
+			<div class="panel two-col">
+				<div class="left-col">
+					<h2>left col</h2>
+					<component
+						v-if="sections"
+						v-for="s in sections.left"
+						:key="s.id"
+						:is="s.name"
+						:sections="s.sections"
+						:settings="s.settings"
+					></component>
+				</div>
+				<div class="right-col">
+					<h2>right col</h2>
+					<component
+						v-if="sections"
+						v-for="s in sections.right"
+						:key="s.id"
+						:is="s.name"
+						:sections="s.sections"
+						:settings="s.settings"
+					></component>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="text-box-template">
+			<div class="widget text-box">
+				<p v-text="settings.text"></p>
+			</div>
+		</script>
+
+		<script src="assets/vue.js"></script>
+		<script src="assets/scripts.js"></script>
+	</body>
+</html>
